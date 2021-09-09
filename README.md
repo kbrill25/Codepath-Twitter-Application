@@ -25,7 +25,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/zfg5EMmSLWXpIoMmJh/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Time spent: **3** hours spent in total
 
