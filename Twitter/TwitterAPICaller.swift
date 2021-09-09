@@ -64,4 +64,51 @@ class TwitterAPICaller: BDBOAuth1SessionManager {
         })
     }
     
+    func postTweet(tweetString:String,success: @escaping () -> (), failure: @escaping (Error) -> ()){
+        //url for updating status (sending a tweet)
+        let url = "https://api.twitter.com/1.1/statuses/update.json"
+        
+        //sending of the tweet
+        TwitterAPICaller.client?.post(url, parameters: ["status":tweetString], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+        
+    }
+    
+    func favoriteTweet(tweetId:Int, success: @escaping () -> (), failure: @escaping(Error) -> ()){
+        let url = "https://api.twitter.com/1.1/favorites/create.json"
+        
+        //favoriting of the tweet
+        TwitterAPICaller.client?.post(url, parameters: ["id":tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
+    
+    func unfavoriteTweet(tweetId:Int, success: @escaping () -> (), failure: @escaping(Error) -> ()){
+        let url = "https://api.twitter.com/1.1/favorites/destroy.json"
+        
+        //favoriting of the tweet
+        TwitterAPICaller.client?.post(url, parameters: ["id":tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
+    
+    func retweet(tweetId:Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        //url from documentation
+        let url = "https://api.twitter.com/1.1/statuses/retweet/\(tweetId).json"
+        
+        //pass parameters of the tweet
+        TwitterAPICaller.client?.post(url, parameters: ["id":tweetId], progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
+    
 }
